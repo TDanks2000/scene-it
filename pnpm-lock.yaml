@@ -20,6 +20,9 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^4.36.1
     version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
+  '@tdanks2000/tmdb-wrapper':
+    specifier: ^1.0.2
+    version: 1.0.2
   '@trpc/client':
     specifier: ^10.43.6
     version: 10.43.6(@trpc/server@10.43.6)
@@ -508,6 +511,11 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /@tdanks2000/tmdb-wrapper@1.0.2:
+    resolution: {integrity: sha512-Sa8iPbUceXAyBTKhJTo4oSMwJmBHfzNjkUfSKS0ESisZAvzLHR1MlhKQxh4hqzYjKCZMejGfbyCKZd2zDqfksw==}
+    engines: {node: '>=16'}
     dev: false
 
   /@trpc/client@10.43.6(@trpc/server@10.43.6):
