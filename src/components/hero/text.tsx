@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type FC } from "react";
 
 interface Props extends React.HTMLAttributes<HTMLParagraphElement> {
   children: React.ReactNode;
