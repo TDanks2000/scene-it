@@ -79,7 +79,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwind-capitalize-first-letter"),
+  ],
 } satisfies Config;
 
 export default config;

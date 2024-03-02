@@ -1,12 +1,13 @@
-import React, { type FC } from "react";
+import { type FC, type HTMLAttributes, type PropsWithChildren } from "react";
 
-interface Props extends React.HTMLAttributes<HTMLParagraphElement> {
-  children: React.ReactNode;
-}
+type Props = PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>;
 
 const HeroText: FC<Props> = ({ children, ...props }) => {
   return (
-    <p className="text-3xl font-semibold text-white" {...props}>
+    <p
+      className="whitespace-pre-wrap break-words break-all text-center text-3xl font-semibold text-white"
+      {...props}
+    >
       {children}
     </p>
   );

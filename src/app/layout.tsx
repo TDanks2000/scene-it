@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
 
-import NavigationBar from "@/components/NavigationBar";
+import NavigationBar from "@/components/navigationBar";
 
 const inter = Inter({
   subsets: ["latin"],

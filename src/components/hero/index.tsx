@@ -1,25 +1,46 @@
+import { SearchTypeEnum } from "@/@types";
+import { api } from "@/trpc/server";
+import { type PopularMovies } from "@tdanks2000/tmdb-wrapper";
 import Image from "next/image";
+import Link from "next/link";
 import HeroText from "./text";
 
-const Hero = () => {
+const fetch = async () => {
+  const res = (await api.tmdb.popular.query({
+    type: SearchTypeEnum.MOVIE,
+  })) as PopularMovies;
+
+  const sortedArray = res.results.sort((a, b) => b.popularity - a.popularity);
+  return sortedArray[0];
+};
+
+const Hero = async () => {
+  const data = await fetch();
+
   return (
     <div className="relative flex h-full w-full items-center justify-center">
       {/* BG */}
       <div className="absolute inset-0">
         <Image
           className="object-cover object-top"
-          src="https://image.tmdb.org/t/p/original/4wtuXhDpvJRWDk03g8YLqtTUzRo.jpg"
+          src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
           draggable={false}
           alt="background"
-          width={1920}
-          height={1080}
+          fill
         />
+
         {/* Blending gradient */}
         <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black to-transparent" />
+
+        <div className="absolute bottom-0 left-0 p-5 text-white transition-all hover:underline hover:opacity-80">
+          <Link href={`/info/movie/${data!.id}`} className="text-xs ">
+            {data?.title} ({new Date(data?.release_date ?? 0).getFullYear()})
+          </Link>
+        </div>
       </div>
 
       {/* Hero Text */}
-      <div className="relative flex w-fit flex-col items-center justify-center gap-7 pt-80">
+      <div className="relative mt-56 flex w-fit flex-col items-center justify-center gap-7">
         <div className="flex flex-col items-center justify-center gap-2">
           <HeroText>Track your favorite movies, shows, and anime.</HeroText>
           <HeroText>Discover what to watch next.</HeroText>

@@ -1,9 +1,7 @@
 import Link, { type LinkProps } from "next/link";
-import { type FunctionComponent } from "react";
+import { type FunctionComponent, type PropsWithChildren } from "react";
 
-interface NavLinkProps extends LinkProps {
-  children: React.ReactNode;
-}
+type NavLinkProps = PropsWithChildren<LinkProps>;
 
 const NavLink: FunctionComponent<NavLinkProps> = ({ children, ...props }) => {
   return (

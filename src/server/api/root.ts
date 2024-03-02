@@ -1,3 +1,4 @@
+import { anilistRouter } from "@/server/api/routers/anilist";
 import { tmdbRouter } from "@/server/api/routers/tmdb";
 import { createTRPCRouter } from "@/server/api/trpc";
 
@@ -8,6 +9,7 @@ import { createTRPCRouter } from "@/server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
   tmdb: tmdbRouter,
+  anilist: anilistRouter,
 });
 
 // export type definition of API

@@ -42,13 +42,15 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String             @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?            @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  reviews       Review[]
+  mediaList     MediaWatchStatus[]
 }
 
 model VerificationToken {
@@ -58,3 +60,31 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Review {
+  id        Int     @id @unique @default(autoincrement())
+  userId    String
+  review    String?
+  rating    Int
+  mediaType String // TV, Movie, Anime
+  mediaId   String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model MediaWatchStatus {
+  id              Int      @id @default(autoincrement())
+  userId          String
+  mediaType       String // TV, Movie, Anime
+  mediaId         String
+  posterImage     String // HD poster image of the media
+  bannerImage     String? // HD banner image of the media
+  status          String // Watching, Plan to watch, Finished, Re-Watching, Paused, Dropped
+  episodeProgress Int // e.g. 2/25 watched 2 out of 25 episodes. 1/1 or 0/1 if a movie
+  episodesTotal   Int // The total number of episodes in the series. 1 if a movie
+  startDate       DateTime @default(now())
+  endDate         DateTime @updatedAt
+  totalRewatches  Int
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Future: store media in db
