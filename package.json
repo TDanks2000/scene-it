@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "next build",
+    "db:gen": "prisma generate",
     "db:push": "prisma db push",
+    "db:update": "pnpm run db:gen & pnpm run db:push",
     "db:studio": "prisma studio",
     "dev": "next dev",
     "postinstall": "prisma generate",
@@ -28,6 +30,7 @@
     "axios": "^1.6.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "embla-carousel-react": "^8.0.0",
     "lucide-react": "^0.336.0",
     "next": "^14.0.4",
     "next-auth": "^4.24.5",

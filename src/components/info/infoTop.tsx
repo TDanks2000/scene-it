@@ -55,12 +55,18 @@ const InfoTop: FunctionComponent<InfoTopProps> = ({
       </div>
 
       <div className="relative mt-20 flex h-full w-full flex-col items-start justify-center gap-6 px-16">
-        {/* media type */}
-
         <div className="mt-3 flex w-full flex-col items-start justify-start gap-4">
-          <div className="mb-2 rounded-full bg-white px-5 py-1 text-lg font-semibold text-black transition-all capitalize-first hover:scale-105 hover:opacity-80">
-            {type}
+          {/* media type */}
+
+          <div className="inline-flex gap-5">
+            <Button variant={"secondary"}>
+              <span className="text-xl capitalize-first">{type}</span>
+            </Button>
+            <Button variant={"secondary"}>
+              <span className="text-xl capitalize-first">Trailer</span>
+            </Button>
           </div>
+
           <h1 className="capa h-full w-full truncate text-5xl capitalize leading-tight">
             {title}
           </h1>

@@ -85,6 +85,7 @@ export const tmdbRouter = createTRPCRouter({
             "reviews",
             "recommendations",
             "similar",
+            "credits",
           ]);
         case SearchTypeEnum.PERSON:
           return await tmdb.people.details(id);
@@ -96,6 +97,7 @@ export const tmdbRouter = createTRPCRouter({
             "reviews",
             "recommendations",
             "similar",
+            "credits",
           ]);
         default:
           throw new Error("Invalid search type");

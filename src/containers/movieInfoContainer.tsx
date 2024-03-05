@@ -1,4 +1,5 @@
 import { SearchTypeEnum } from "@/@types";
+import Cast from "@/components/info/Cast";
 import InfoTop from "@/components/info/infoTop";
 import { api } from "@/trpc/server";
 import { getTitle } from "@/utils";
@@ -32,6 +33,7 @@ const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type }) => {
       (
         | "alternative_titles"
         | "images"
+        | "credits"
         | "watch/providers"
         | "reviews"
         | "recommendations"
@@ -61,6 +63,7 @@ const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type }) => {
       | "images"
       | "recommendations"
       | "reviews"
+      | "credits"
       | "similar"
       | "release_dates"
       | "alternative_titles"
@@ -79,6 +82,8 @@ const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type }) => {
         genres={data.genres}
         description={data.overview}
       />
+
+      <Cast data={data.credits.cast} />
     </div>
   );
 };
