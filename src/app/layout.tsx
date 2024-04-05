@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/globals.css";
 
 import { Inter } from "next/font/google";
@@ -26,8 +27,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${inter.variable} bg-black`}>
         <TRPCReactProvider>
-          <NavigationBar />
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NavigationBar />
+            {children}
+          </ThemeProvider>
         </TRPCReactProvider>
       </body>
     </html>

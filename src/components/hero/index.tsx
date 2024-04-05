@@ -22,7 +22,7 @@ const Hero = async () => {
       {/* BG */}
       <div className="absolute inset-0">
         <Image
-          className="object-cover object-top"
+          className="h-full w-full object-cover object-top"
           src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
           draggable={false}
           alt="background"
