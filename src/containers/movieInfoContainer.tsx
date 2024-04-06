@@ -1,30 +1,22 @@
-import { SearchTypeEnum } from "@/@types";
 import Cast from "@/components/info/Cast";
 import InfoTop from "@/components/info/infoTop";
-import { api } from "@/trpc/server";
 import { getTitle } from "@/utils";
 import {
   type AppendToResponse,
   type MovieDetails,
   type TvShowDetails,
 } from "@tdanks2000/tmdb-wrapper";
+import Head from "next/head";
 import { type FC } from "react";
 
 interface MovieInfoProps {
   type: "movie" | "tv";
   id: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fetch: (type: "movie" | "tv", id: string) => Promise<any>;
 }
 
-const fetch = async (type: "movie" | "tv", id: string) => {
-  const data = await api.tmdb.info.query({
-    id: parseInt(id),
-    type: type === "movie" ? SearchTypeEnum.MOVIE : SearchTypeEnum.TV,
-  });
-
-  return data;
-};
-
-const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type }) => {
+const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type, fetch }) => {
   let data = await fetch(type, id);
 
   if (type === "tv") {
@@ -73,18 +65,22 @@ const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type }) => {
   >;
 
   return (
-    <div>
-      <InfoTop
-        cover={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
-        title={data.title}
-        type={type}
-        year={new Date(data.release_date).getFullYear()}
-        genres={data.genres}
-        description={data.overview}
-      />
+    <>
+      <div>
+        <InfoTop
+          cover={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
+          title={data.title}
+          type={type}
+          year={new Date(data.release_date).getFullYear()}
+          genres={data.genres}
+          description={data.overview}
+        />
 
-      <Cast data={data.credits.cast} />
-    </div>
+        <div className="px-16 pb-14">
+          <Cast data={data.credits.cast} />
+        </div>
+      </div>
+    </>
   );
 };
 

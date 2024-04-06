@@ -30,7 +30,7 @@ const Hero = async () => {
         />
 
         {/* Blending gradient */}
-        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black to-transparent opacity-90" />
 
         <div className="absolute bottom-0 left-0 p-5 text-white transition-all hover:underline hover:opacity-80">
           <Link href={`/info/movie/${data!.id}`} className="text-xs ">
@@ -42,7 +42,9 @@ const Hero = async () => {
       {/* Hero Text */}
       <div className="relative mt-56 flex w-fit flex-col items-center justify-center gap-7">
         <div className="flex flex-col items-center justify-center gap-2">
-          <HeroText>Track your favorite movies, shows, and anime.</HeroText>
+          <HeroText className="gao-0 flex h-[31px] flex-row overflow-hidden font-semibold text-white">
+            Track your favorite movies, tv shows, anime
+          </HeroText>
           <HeroText>Discover what to watch next.</HeroText>
           <HeroText>Share your ratings with friends.</HeroText>
         </div>
