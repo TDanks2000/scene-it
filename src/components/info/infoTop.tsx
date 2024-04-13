@@ -51,7 +51,7 @@ const InfoTop: FunctionComponent<InfoTopProps> = ({
           fill
         />
         {/* Blending gradient */}
-        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-zinc-950 to-transparent" />
       </div>
 
       <div className="relative mt-20 flex h-full w-full flex-col items-start justify-center gap-6 px-16">

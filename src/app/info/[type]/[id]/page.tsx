@@ -42,6 +42,7 @@ export async function generateMetadata({
             | "images"
             | "recommendations"
             | "reviews"
+            | "videos"
             | "credits"
             | "similar"
             | "release_dates"
@@ -60,6 +61,7 @@ export async function generateMetadata({
           (
             | "alternative_titles"
             | "images"
+            | "videos"
             | "credits"
             | "watch/providers"
             | "reviews"
@@ -69,7 +71,7 @@ export async function generateMetadata({
           "tvShow"
         >;
         return {
-          title: "getTitle(data.name)",
+          title: `Scene it | ${getTitle(data.name)}`,
           description: data.overview,
         };
     }

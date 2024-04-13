@@ -77,22 +77,28 @@ export const tmdbRouter = createTRPCRouter({
 
       switch (type) {
         case SearchTypeEnum.MOVIE:
-          return await tmdb.movies.details(id, [
-            "alternative_titles",
-            "images",
-            "watch/providers",
-            "release_dates",
-            "reviews",
-            "recommendations",
-            "similar",
-            "credits",
-          ]);
+          return await tmdb.movies.details(
+            id,
+            [
+              "alternative_titles",
+              "images",
+              "videos",
+              "watch/providers",
+              "release_dates",
+              "reviews",
+              "recommendations",
+              "similar",
+              "credits",
+            ],
+            "en",
+          );
         case SearchTypeEnum.PERSON:
           return await tmdb.people.details(id);
         case SearchTypeEnum.TV:
           return await tmdb.tvShows.details(id, [
             "alternative_titles",
             "images",
+            "videos",
             "watch/providers",
             "reviews",
             "recommendations",

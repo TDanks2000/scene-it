@@ -58,10 +58,6 @@
   }
 }
 
-body,
-html {
-}
-
 .grid-area {
   grid-area: 1/1/1/1;
 }

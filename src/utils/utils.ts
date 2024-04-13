@@ -37,3 +37,12 @@ export const textSanitizer = (textWithHTML: string): string => {
     allowedTags: [],
   });
 };
+
+export const combineArrays = <T>(...args: (T | T[])[]): T[] => {
+  return args.reduce((result: T[], arg: T | T[]) => {
+    if (Array.isArray(arg)) {
+      result.push(...arg);
+    }
+    return result;
+  }, []);
+};

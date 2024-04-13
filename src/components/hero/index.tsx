@@ -30,7 +30,7 @@ const Hero = async () => {
         />
 
         {/* Blending gradient */}
-        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black to-transparent opacity-90" />
+        <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-zinc-950 to-transparent" />
 
         <div className="absolute bottom-0 left-0 p-5 text-white transition-all hover:underline hover:opacity-80">
           <Link href={`/info/movie/${data!.id}`} className="text-xs ">

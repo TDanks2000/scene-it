@@ -1,12 +1,12 @@
+import SeasonsComponent from "@/components/Seasons";
 import Cast from "@/components/info/Cast";
 import InfoTop from "@/components/info/infoTop";
 import { getTitle } from "@/utils";
-import {
-  type AppendToResponse,
-  type MovieDetails,
-  type TvShowDetails,
+import type {
+  AppendToResponse,
+  MovieDetails,
+  TvShowDetails,
 } from "@tdanks2000/tmdb-wrapper";
-import Head from "next/head";
 import { type FC } from "react";
 
 interface MovieInfoProps {
@@ -17,14 +17,15 @@ interface MovieInfoProps {
 }
 
 const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type, fetch }) => {
-  let data = await fetch(type, id);
+  const data = await fetch(type, id);
 
   if (type === "tv") {
-    data = data as AppendToResponse<
+    const tvData = data as AppendToResponse<
       TvShowDetails,
       (
         | "alternative_titles"
         | "images"
+        | "videos"
         | "credits"
         | "watch/providers"
         | "reviews"
@@ -36,23 +37,30 @@ const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type, fetch }) => {
     return (
       <div>
         <InfoTop
-          cover={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
-          title={getTitle(data.name)}
+          cover={`https://image.tmdb.org/t/p/original/${tvData.backdrop_path}`}
+          title={getTitle(tvData.name)}
           type={type}
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          episodes={data.number_of_episodes}
-          year={new Date(data.first_air_date).getFullYear()}
-          genres={data.genres}
-          description={data.overview}
+          episodes={tvData.number_of_episodes}
+          year={new Date(tvData.first_air_date).getFullYear()}
+          genres={tvData.genres}
+          description={tvData.overview}
         />
+
+        <div className="flex flex-col gap-14 px-16 pb-14">
+          <Cast data={tvData.credits.cast} />
+
+          <SeasonsComponent seasons={tvData.seasons} />
+        </div>
       </div>
     );
   }
 
-  data = data as AppendToResponse<
+  const movieData = data as AppendToResponse<
     MovieDetails,
     (
       | "images"
+      | "videos"
       | "recommendations"
       | "reviews"
       | "credits"
@@ -68,16 +76,16 @@ const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type, fetch }) => {
     <>
       <div>
         <InfoTop
-          cover={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
-          title={data.title}
+          cover={`https://image.tmdb.org/t/p/original/${movieData.backdrop_path}`}
+          title={movieData.title}
           type={type}
-          year={new Date(data.release_date).getFullYear()}
-          genres={data.genres}
-          description={data.overview}
+          year={new Date(movieData.release_date).getFullYear()}
+          genres={movieData.genres}
+          description={movieData.overview}
         />
 
-        <div className="px-16 pb-14">
-          <Cast data={data.credits.cast} />
+        <div className="flex flex-col gap-14 px-16 pb-14">
+          <Cast data={movieData.credits.cast} />
         </div>
       </div>
     </>
