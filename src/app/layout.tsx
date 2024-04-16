@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/globals.css";
+import NextTopLoader from "nextjs-toploader";
 
 import { Inter } from "next/font/google";
 
@@ -26,6 +27,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${inter.variable} bg-zinc-950`}>
+        <NextTopLoader
+          color="#ffffff"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={2}
+          crawl={true}
+          showSpinner={true}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #ffff,0 0 5px #ffff"
+        />
         <TRPCReactProvider>
           <ThemeProvider
             attribute="class"

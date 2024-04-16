@@ -2,6 +2,7 @@ import { unstable_noStore as noStore } from "next/cache";
 
 import FeatureShowcase from "@/components/featureShowcase";
 import Hero from "@/components/hero";
+import TopGrid from "@/containers/topGrid";
 import {
   BarChart4,
   CalendarDays,
@@ -70,6 +71,14 @@ export default async function Home() {
       {/* Feature showcase */}
       <div className="mt-14 flex h-full w-full max-w-full flex-row items-center justify-center bg-black bg-opacity-20 px-16 py-4">
         <FeatureShowcase features={features} />
+      </div>
+
+      <div className="mt-14 flex w-full flex-col gap-6 overflow-hidden px-16 py-4">
+        <TopGrid type="TV_SHOWS" />
+      </div>
+
+      <div className="mt-14 flex w-full flex-col gap-6 overflow-hidden px-16 py-4">
+        <TopGrid type="MOVIES" />
       </div>
     </main>
   );

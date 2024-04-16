@@ -52,13 +52,31 @@ export const tmdbRouter = createTRPCRouter({
 
       switch (type) {
         case SearchTypeEnum.MOVIE:
-          return await tmdb.movies.popular({ page });
+          return await tmdb.movies.popular({ page, language: "en" });
         case SearchTypeEnum.PERSON:
-          return await tmdb.people.popular({ page });
+          return await tmdb.people.popular({ page, language: "en" });
         case SearchTypeEnum.TV:
-          return await tmdb.tvShows.popular({ page });
+          return await tmdb.tvShows.popular({ page, language: "en" });
         default:
           throw new Error("Invalid search type");
+      }
+    }),
+  top: publicProcedure
+    .input(
+      z.object({
+        type: z.enum([SearchTypeEnum.MOVIE, SearchTypeEnum.TV]),
+        page: z.number().default(1),
+      }),
+    )
+    .query(async ({ input }) => {
+      const { page, type } = input;
+
+      switch (type) {
+        case SearchTypeEnum.MOVIE:
+        default:
+          return await tmdb.movies.topRated({ page, language: "en" });
+        case SearchTypeEnum.TV:
+          return await tmdb.tvShows.topRated({ page, language: "en" });
       }
     }),
   info: publicProcedure
