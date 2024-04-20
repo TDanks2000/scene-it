@@ -2,10 +2,10 @@ import Image from "next/image";
 import { type FC } from "react";
 
 interface CastCardProps {
-  id: number;
-  image: string;
-  name: string;
-  role: string;
+  id?: number;
+  image?: string;
+  name?: string;
+  role?: string;
 }
 
 const CastCard: FC<CastCardProps> = ({ image, id, name, role }) => {
@@ -16,8 +16,8 @@ const CastCard: FC<CastCardProps> = ({ image, id, name, role }) => {
     >
       <div className="h-[75%] w-full flex-shrink-0 flex-grow-0 overflow-hidden rounded-xl">
         <Image
-          src={image}
-          alt={name}
+          src={image!}
+          alt={name!}
           width={300}
           height={250}
           className="object-cover"

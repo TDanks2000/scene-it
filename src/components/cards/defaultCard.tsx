@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { type FunctionComponent } from "react";
 
 interface DefaultCardProps {
@@ -5,6 +6,7 @@ interface DefaultCardProps {
   image: string;
   title: string;
   description: string;
+  href: string;
 }
 
 const DefaultCard: FunctionComponent<DefaultCardProps> = ({
@@ -12,6 +14,7 @@ const DefaultCard: FunctionComponent<DefaultCardProps> = ({
   id,
   image,
   title,
+  href
 }) => {
   return (
     <div
@@ -21,13 +24,14 @@ const DefaultCard: FunctionComponent<DefaultCardProps> = ({
         backgroundImage: `url(${image})`,
       }}
     >
-      {/* Show on hover */}
+      <Link href={href}>
       <div className="absolute -bottom-[251px] left-0 right-0 flex h-full w-full flex-col justify-end overflow-hidden bg-gradient-to-t from-zinc-950 to-transparent p-3 transition-all group-hover:bottom-0">
         <div className="flex-col gap-2 p-2">
           <h3 className="line-clamp-2 text-lg text-white">{title}</h3>
           <p className="line-clamp-2 text-sm text-gray-300">{description}</p>
         </div>
       </div>
+      </Link>
     </div>
   );
 };

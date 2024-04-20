@@ -2,7 +2,8 @@ import { unstable_noStore as noStore } from "next/cache";
 
 import FeatureShowcase from "@/components/featureShowcase";
 import Hero from "@/components/hero";
-import TopGrid from "@/containers/topGrid";
+import TopGrid from "@/containers/topGrid/topGrid";
+import TopGridAnime from "@/containers/topGrid/topGridAnime";
 import {
   BarChart4,
   CalendarDays,
@@ -79,6 +80,10 @@ export default async function Home() {
 
       <div className="mt-14 flex w-full flex-col gap-6 overflow-hidden px-16 py-4">
         <TopGrid type="MOVIES" />
+      </div>
+
+      <div className="mt-14 flex w-full flex-col gap-6 overflow-hidden px-16 py-4">
+        <TopGridAnime />
       </div>
     </main>
   );

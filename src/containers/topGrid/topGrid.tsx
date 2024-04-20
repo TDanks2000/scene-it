@@ -38,7 +38,7 @@ const TopGrid: FunctionComponent<TopGridProps> = async ({ type }) => {
     return (
       <>
         <h1 className="text-4xl font-bold lowercase capitalize-first">
-          Top {type.replaceAll("_", " ")} to watch
+          Top Movies to watch
         </h1>
 
         <div className="grid grid-cols-3 grid-rows-2 gap-5">
@@ -119,7 +119,7 @@ const TopGrid: FunctionComponent<TopGridProps> = async ({ type }) => {
     return (
       <>
         <h1 className="text-4xl font-bold lowercase capitalize-first">
-          Top {type.replaceAll("_", " ")} to watch in 2024
+          Top Tv Series to watch
         </h1>
 
         <div className="grid grid-cols-3 grid-rows-2 gap-5">

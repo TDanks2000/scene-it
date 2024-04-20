@@ -1,4 +1,4 @@
-import AnimeInfoContainer from "@/containers/animeInfoContainer";
-import MovieInfoContainer from "@/containers/movieInfoContainer";
+import AnimeInfoContainer from "@/containers/info/animeInfoContainer";
+import MovieInfoContainer from "@/containers/info/movieInfoContainer";
 
 export { AnimeInfoContainer, MovieInfoContainer };

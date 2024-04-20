@@ -1,4 +1,5 @@
-import InfoTop from "@/components/info/infoTop";
+import Cast from "@/components/info/Cast";
+import InfoTop from "@/components/info/infoTop/InfoTop";
 import { api } from "@/trpc/server";
 import { getTitle } from "@/utils";
 import { type FC } from "react";
@@ -31,6 +32,12 @@ const AnimeInfoContainer: FC<AnimeInfoProps> = async ({ id }) => {
         genres={media.genres.map((genre) => ({ name: genre }))}
         description={media.description}
       />
+
+      <div className="flex flex-col gap-14 px-16 pb-14">
+        <Cast type="anime" data={media.characters.edges} />
+
+        {/* <SeasonsComponent seasons={tvData.seasons} /> */}
+      </div>
     </div>
   );
 };

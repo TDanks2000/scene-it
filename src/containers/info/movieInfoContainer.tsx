@@ -1,6 +1,6 @@
 import SeasonsComponent from "@/components/Seasons";
 import Cast from "@/components/info/Cast";
-import InfoTop from "@/components/info/infoTop";
+import InfoTop from "@/components/info/infoTop/InfoTop";
 import { getTitle } from "@/utils";
 import type {
   AppendToResponse,
@@ -48,9 +48,9 @@ const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type, fetch }) => {
         />
 
         <div className="flex flex-col gap-14 px-16 pb-14">
-          <Cast data={tvData.credits.cast} />
+          <Cast data={tvData.credits.cast} type="tv" />
 
-          <SeasonsComponent seasons={tvData.seasons} />
+          <SeasonsComponent seasons={tvData.seasons} type="tv" mediaId={id} />
         </div>
       </div>
     );
@@ -85,7 +85,7 @@ const MovieInfoContainer: FC<MovieInfoProps> = async ({ id, type, fetch }) => {
         />
 
         <div className="flex flex-col gap-14 px-16 pb-14">
-          <Cast data={movieData.credits.cast} />
+          <Cast data={movieData.credits.cast} type="movie" />
         </div>
       </div>
     </>

@@ -8,11 +8,15 @@ import { type Season } from "@tdanks2000/tmdb-wrapper";
 import { useMemo, type FunctionComponent } from "react";
 
 interface SeasonComponentProps {
+  mediaId: string;
+  type: "movie" | "tv" | "anime";
   seasons: Season[];
 }
 
 const SeasonsComponent: FunctionComponent<SeasonComponentProps> = ({
+  mediaId,
   seasons,
+  type,
 }) => {
   const sorted = useMemo(() => {
     if (!seasons) return null;
@@ -42,6 +46,7 @@ const SeasonsComponent: FunctionComponent<SeasonComponentProps> = ({
                 image={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
                 id={item.id}
                 description={`Episodes ${item.episode_count}`}
+                href={`/info/${type}/${mediaId}/season/${item.season_number}`}
               />
             </CarouselItem>
           ))}

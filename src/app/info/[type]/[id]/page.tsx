@@ -2,10 +2,10 @@ import { SearchTypeEnum } from "@/@types";
 import { AnimeInfoContainer, MovieInfoContainer } from "@/containers";
 import { api } from "@/trpc/server";
 import { getTitle } from "@/utils";
-import {
-  type AppendToResponse,
-  type MovieDetails,
-  type TvShowDetails,
+import type {
+  AppendToResponse,
+  MovieDetails,
+  TvShowDetails,
 } from "@tdanks2000/tmdb-wrapper";
 import { type Metadata } from "next";
 import { redirect } from "next/navigation";

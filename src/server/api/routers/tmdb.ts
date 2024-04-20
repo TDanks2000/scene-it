@@ -4,6 +4,7 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { TMDB } from "@tdanks2000/tmdb-wrapper";
 import { z } from "zod";
 
+
 const tmdb = new TMDB(env.TMDB_ACCESS_TOKEN);
 
 export const tmdbRouter = createTRPCRouter({

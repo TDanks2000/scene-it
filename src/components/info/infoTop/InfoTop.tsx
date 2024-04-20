@@ -4,7 +4,9 @@ import Image from "next/image";
 import { useMemo, type FunctionComponent } from "react";
 
 import { textSanitizer } from "@/utils";
-import { Check, Heart, LibraryBig } from "lucide-react";
+import { Heart, LibraryBig } from "lucide-react";
+
+import WhenWatched from "@/components/info/infoTop/whenWatched";
 
 type InfoTopProps = {
   title: string;
@@ -83,15 +85,8 @@ const InfoTop: FunctionComponent<InfoTopProps> = ({
 
         {/* Action Buttons */}
         <div className="relative flex gap-5">
-          <Button
-            key={"watch-status"}
-            variant={"secondary"}
-            className="gap-2"
-            size={"default"}
-          >
-            <Check />
-            <span>Mark as watched</span>
-          </Button>
+          <WhenWatched />
+
           <Button
             key={"library"}
             variant={"secondary"}
